@@ -1,0 +1,38 @@
+{
+  "name": "webgl",
+  "version": "0.0.1",
+  "description": "WebGL playground",
+  "scripts": {
+    "dev": "webpack-dev-server --progress",
+    "build": "webpack --mode=production --progress"
+  },
+  "author": "Sorin Cătană",
+  "repository": "https://github.com/scatana/webgl.git",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.4.1",
+    "file-loader": "^5.0.2",
+    "glsl-shader-loader": "^0.1.6",
+    "html-webpack-plugin": "^3.2.0",
+    "milligram": "^1.3.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "style-loader": "^1.1.2",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  }
+}
