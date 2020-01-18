@@ -5,10 +5,10 @@ const Home = () => {
   return (
     <ul>
       <li>
-        <Link to="/black-canvas">Black canvas</Link>
+        <Link to="/colored-triangle-2d">Colored triangle (2D)</Link>
       </li>
       <li>
-        <Link to="/colored-triangle-2d">Colored triangle (2D)</Link>
+        <Link to="/black-canvas">Black canvas</Link>
       </li>
     </ul>
   );

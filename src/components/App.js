@@ -6,36 +6,39 @@ import {
   Link
 } from "react-router-dom";
 
+// Loading indicator
+import LoadingIndicator from 'components/common/LoadingIndicator';
+
 // Pages
-const Home = lazy(() => import(
-  /* webpackChunkName: "Home" */
-  'components/pages/Home'
+const ColoredTriangle2D = lazy(() => import(
+  /* webpackChunkName: "ColoredTriangle2D" */
+  'components/pages/ColoredTriangle2D'
 ));
 const BlackCanvas = lazy(() => import(
   /* webpackChunkName: "BlackCanvas" */
   'components/pages/BlackCanvas'
 ));
-const ColoredTriangle2D = lazy(() => import(
-  /* webpackChunkName: "ColoredTriangle2D" */
-  'components/pages/ColoredTriangle2D'
+const Home = lazy(() => import(
+  /* webpackChunkName: "Home" */
+  'components/pages/Home'
 ));
 
 const App = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/black-canvas">
-          <Suspense fallback={<div>Loading...</div>}>
-            <BlackCanvas />
-          </Suspense>
-        </Route>
         <Route path="/colored-triangle-2d">
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingIndicator />}>
             <ColoredTriangle2D />
           </Suspense>
         </Route>
+        <Route path="/black-canvas">
+          <Suspense fallback={<LoadingIndicator />}>
+            <BlackCanvas />
+          </Suspense>
+        </Route>
         <Route path="/">
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingIndicator />}>
             <Home />
           </Suspense>
         </Route>
