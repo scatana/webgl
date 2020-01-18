@@ -1,16 +1,32 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import _chunk from 'lodash/chunk';
 
 const Home = () => {
+  const pages = [
+    {
+      route: '/colored-triangle-2d',
+      name: 'Colored triangle (2D)'
+    },
+    {
+      route: '/black-canvas',
+      name: 'Black canvas'
+    }
+  ];
+  const chunks = _chunk(pages, 2);
+
   return (
-    <ul>
-      <li>
-        <Link to="/colored-triangle-2d">Colored triangle (2D)</Link>
-      </li>
-      <li>
-        <Link to="/black-canvas">Black canvas</Link>
-      </li>
-    </ul>
+    <div className="container">
+      {chunks.map((chunk, index) => (
+        <div className="row" key={index}>
+          {chunk.map((page, index) => (
+            <div className="column column-50" key={index}>
+              <Link to={page.route}>{page.name}</Link>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
   );
 };
 

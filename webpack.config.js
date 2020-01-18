@@ -23,6 +23,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: [
           'style-loader',
           {
@@ -34,6 +35,13 @@ module.exports = {
               }
             }
           }
+        ]
+      },
+      {
+        resource: path.resolve('./node_modules/milligram/dist/milligram.min.css'),
+        use: [
+          'style-loader',
+          'css-loader'
         ]
       },
       {
