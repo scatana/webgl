@@ -1,0 +1,27 @@
+.indicator {
+  position: fixed;
+  top: 0;
+  height: 5px;
+  background-color: #87bfff;
+  animation: slide;
+  animation-duration: 1.25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes slide {
+  from {
+    width: 0;
+    left: 0;
+  }
+
+  50% {
+    width: 100%;
+    left: 0;
+  }
+
+  to {
+    width: 0;
+    left: 100%;
+  }
+}
