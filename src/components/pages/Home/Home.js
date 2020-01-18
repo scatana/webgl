@@ -6,11 +6,11 @@ const Home = () => {
   const pages = [
     {
       route: '/colored-triangle-2d',
-      name: 'Colored triangle (2D)'
+      title: 'Colored triangle (2D)'
     },
     {
       route: '/black-canvas',
-      name: 'Black canvas'
+      title: 'Black canvas'
     }
   ];
   const chunks = _chunk(pages, 2);
@@ -21,7 +21,7 @@ const Home = () => {
         <div className="row" key={index}>
           {chunk.map((page, index) => (
             <div className="column column-50" key={index}>
-              <Link to={page.route}>{page.name}</Link>
+              <Link to={page.route}>{page.title}</Link>
             </div>
           ))}
         </div>
