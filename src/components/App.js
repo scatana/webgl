@@ -6,12 +6,19 @@ import {
   Link
 } from "react-router-dom";
 
-const Home = lazy(() =>
-  import(/* webpackChunkName: "Home" */'components/pages/Home')
-);
-const BlackCanvas = lazy(() =>
-  import(/* webpackChunkName: "BlackCanvas" */'components/pages/BlackCanvas')
-);
+// Pages
+const Home = lazy(() => import(
+  /* webpackChunkName: "Home" */
+  'components/pages/Home'
+));
+const BlackCanvas = lazy(() => import(
+  /* webpackChunkName: "BlackCanvas" */
+  'components/pages/BlackCanvas'
+));
+const ColoredTriangle2D = lazy(() => import(
+  /* webpackChunkName: "ColoredTriangle2D" */
+  'components/pages/ColoredTriangle2D'
+));
 
 const App = () => {
   return (
@@ -20,6 +27,11 @@ const App = () => {
         <Route path="/black-canvas">
           <Suspense fallback={<div>Loading...</div>}>
             <BlackCanvas />
+          </Suspense>
+        </Route>
+        <Route path="/colored-triangle-2d">
+          <Suspense fallback={<div>Loading...</div>}>
+            <ColoredTriangle2D />
           </Suspense>
         </Route>
         <Route path="/">
