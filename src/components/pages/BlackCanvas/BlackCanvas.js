@@ -16,10 +16,7 @@ const BlackCanvas = () => {
   }
 
   return (
-    <GLCanvas
-      fullScreen={true}
-      setGlContext={setGl}
-    />
+    <GLCanvas setGlContext={setGl} />
   );
 }
 

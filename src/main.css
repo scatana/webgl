@@ -6,9 +6,23 @@
        url('assets/fonts/Roboto-Regular.woff2') format('woff2');
 }
 
-html, body {
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('assets/fonts/Roboto-Slab-Regular.woff2') format('woff2');
+}
+
+html,
+body,
+:global(#root) {
   margin: 0;
   padding: 0;
   height: 100%;
   min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Slab', serif;
 }
