@@ -6,6 +6,9 @@ import styles from './GLCanvas.css';
 const GLCanvas = (props) => {
   const { setGlContext, fullScreen } = props;
   const canvasRef = useRef(null);
+  const classNames = [styles.canvas];
+
+  if (fullScreen) classNames.push(styles.fullScreen);
 
   useEffect(() => {
     const gl = canvasRef.current.getContext('webgl' || 'experimental-webgl');
@@ -15,7 +18,7 @@ const GLCanvas = (props) => {
 
   return (
     <canvas
-      className={`${styles.canvas}${fullScreen ? ' ' + styles.fullScreen : ''}`}
+      className={classNames.join(' ')}
       ref={canvasRef}>
       Your browser does not support WebGL.
     </canvas>
