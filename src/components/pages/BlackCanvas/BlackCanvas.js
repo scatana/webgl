@@ -1,7 +1,6 @@
 import React, { lazy, useState, useEffect } from 'react';
 
 import GLCanvas from 'components/common/GLCanvas';
-import styles from './BlackCanvas.css';
 
 const BlackCanvas = () => {
   const [gl, setGl] = useState(null);
@@ -16,9 +15,7 @@ const BlackCanvas = () => {
   }
 
   return (
-    <div className={styles.canvasContainer}>
-      <GLCanvas setGlContext={setGl} />
-    </div>
+    <GLCanvas setGlContext={setGl} fullScreen={true} />
   );
 }
 

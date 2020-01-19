@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './GLCanvas.css';
 
 const GLCanvas = (props) => {
-  const { setGlContext } = props;
+  const { setGlContext, fullScreen } = props;
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -14,18 +14,22 @@ const GLCanvas = (props) => {
   });
 
   return (
-    <canvas className={styles.canvas} ref={canvasRef}>
+    <canvas
+      className={`${styles.canvas}${fullScreen ? ' ' + styles.fullScreen : ''}`}
+      ref={canvasRef}>
       Your browser does not support WebGL.
     </canvas>
   );
 };
 
 GLCanvas.propTypes = {
-  setGlContext: PropTypes.func
+  setGlContext: PropTypes.func,
+  fullScreen: PropTypes.bool
 }
 
 GLCanvas.defaultProps = {
-  setGlContext: () => {}
+  setGlContext: () => {},
+  fullScreen: false
 }
 
 export default GLCanvas;
