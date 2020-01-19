@@ -1,8 +1,6 @@
 import React, { lazy, useState, useEffect } from 'react';
 
-const GLCanvas = lazy(() =>
-  import(/* webpackChunkName: "GLCanvas" */'components/common/GLCanvas')
-);
+import GLCanvas from 'components/common/GLCanvas';
 
 const BlackCanvas = () => {
   const [gl, setGl] = useState(null);
@@ -18,7 +16,10 @@ const BlackCanvas = () => {
   }
 
   return (
-    <GLCanvas setGlContext={setGl} />
+    <GLCanvas
+      fullScreen={true}
+      setGlContext={setGl}
+    />
   );
 }
 

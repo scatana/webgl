@@ -6,8 +6,9 @@ import {
   Link
 } from "react-router-dom";
 
-// Loading indicator
+// Pull common components into the main chunk
 import LoadingIndicator from 'components/common/LoadingIndicator';
+import GLCanvas from 'components/common/GLCanvas';
 
 // Pages
 const ColoredTriangle2D = lazy(() => import(
