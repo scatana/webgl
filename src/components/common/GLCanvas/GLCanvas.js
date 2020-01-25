@@ -13,6 +13,8 @@ const GLCanvas = (props) => {
   useEffect(() => {
     const gl = canvasRef.current.getContext('webgl' || 'experimental-webgl');
 
+    gl.viewport(0, 0, canvasRef.current.width, canvasRef.current.height);
+
     setGlContext(gl);
   });
 

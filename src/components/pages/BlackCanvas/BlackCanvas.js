@@ -1,4 +1,4 @@
-import React, { lazy, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import GLCanvas from 'components/common/GLCanvas';
 
