@@ -11,9 +11,9 @@ import LoadingIndicator from 'components/common/LoadingIndicator';
 import GLCanvas from 'components/common/GLCanvas';
 
 // Pages
-const ColoredTriangle2D = lazy(() => import(
-  /* webpackChunkName: "ColoredTriangle2D" */
-  'components/pages/ColoredTriangle2D'
+const HelloPoint1 = lazy(() => import(
+  /* webpackChunkName: "HelloPoint1" */
+  'components/pages/HelloPoint1'
 ));
 const ClearCanvas = lazy(() => import(
   /* webpackChunkName: "ClearCanvas" */
@@ -28,9 +28,9 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/colored-triangle-2d">
+        <Route path="/hello-point-1">
           <Suspense fallback={<LoadingIndicator />}>
-            <ColoredTriangle2D />
+            <HelloPoint1 />
           </Suspense>
         </Route>
         <Route path="/clear-canvas">

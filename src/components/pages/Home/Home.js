@@ -7,8 +7,8 @@ import styles from './Home.css';
 const Home = () => {
   const pages = [
     {
-      route: '/colored-triangle-2d',
-      title: 'Colored triangle (2D)'
+      route: '/hello-point-1',
+      title: 'Hello Point (1)'
     },
     {
       route: '/clear-canvas',

@@ -30,7 +30,7 @@ const GLCanvas = (props) => {
   });
 
   const initShaders = (gl, vShader, fShader) => {
-    const program = gl.createProgram(gl, vShader, fShader);
+    const program = createProgram(gl, vShader, fShader);
 
     if (!program) {
       console.log('(initShaders) Failed to create program.');
@@ -81,7 +81,7 @@ const GLCanvas = (props) => {
   };
 
   const loadShader = (gl, type, source) => {
-    const shader = gl.createShader();
+    const shader = gl.createShader(type);
 
     if (!shader) {
       console.log('(loadShader) Unable to create shader.');
