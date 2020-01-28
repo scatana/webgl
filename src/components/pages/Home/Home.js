@@ -11,8 +11,8 @@ const Home = () => {
       title: 'Colored triangle (2D)'
     },
     {
-      route: '/black-canvas',
-      title: 'Black canvas'
+      route: '/clear-canvas',
+      title: 'Clear canvas'
     }
   ];
   const chunks = _chunk(pages, 2);

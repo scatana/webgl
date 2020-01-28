@@ -15,9 +15,9 @@ const ColoredTriangle2D = lazy(() => import(
   /* webpackChunkName: "ColoredTriangle2D" */
   'components/pages/ColoredTriangle2D'
 ));
-const BlackCanvas = lazy(() => import(
-  /* webpackChunkName: "BlackCanvas" */
-  'components/pages/BlackCanvas'
+const ClearCanvas = lazy(() => import(
+  /* webpackChunkName: "ClearCanvas" */
+  'components/pages/ClearCanvas'
 ));
 const Home = lazy(() => import(
   /* webpackChunkName: "Home" */
@@ -33,9 +33,9 @@ const App = () => {
             <ColoredTriangle2D />
           </Suspense>
         </Route>
-        <Route path="/black-canvas">
+        <Route path="/clear-canvas">
           <Suspense fallback={<LoadingIndicator />}>
-            <BlackCanvas />
+            <ClearCanvas />
           </Suspense>
         </Route>
         <Route path="/">

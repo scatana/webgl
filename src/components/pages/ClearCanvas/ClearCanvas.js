@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import GLCanvas from 'components/common/GLCanvas';
 
-const BlackCanvas = () => {
+const ClearCanvas = () => {
   const [gl, setGl] = useState(null);
 
   useEffect(() => {
@@ -19,4 +19,4 @@ const BlackCanvas = () => {
   );
 }
 
-export default BlackCanvas;
+export default ClearCanvas;
