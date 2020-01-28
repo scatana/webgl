@@ -47,7 +47,7 @@ const ColoredTriangle2D = () => {
   }
 
   return (
-    <GLCanvas setGlContext={setGl} fullScreen={true} />
+    <GLCanvas setGl={setGl} fullScreen={true} />
   );
 };
 
