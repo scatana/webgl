@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import styles from './GLCanvas.css';
 
 const GLCanvas = (props) => {
-  const { setGlContext, fullScreen } = props;
+  const { setGlContext, width, height, fullScreen } = props;
   const canvasRef = useRef(null);
-  const classNames = [styles.canvas];
+  const classNames = [];
 
   if (fullScreen) classNames.push(styles.fullScreen);
 
@@ -20,6 +20,8 @@ const GLCanvas = (props) => {
 
   return (
     <canvas
+      width={width}
+      height={height}
       className={classNames.join(' ')}
       ref={canvasRef}>
       Your browser does not support WebGL.
@@ -28,11 +30,15 @@ const GLCanvas = (props) => {
 };
 
 GLCanvas.propTypes = {
+  width: PropTypes.number,
+  height: PropTypes.number,
   setGlContext: PropTypes.func,
   fullScreen: PropTypes.bool
 }
 
 GLCanvas.defaultProps = {
+  width: 400,
+  height: 400,
   setGlContext: () => {},
   fullScreen: false
 }
