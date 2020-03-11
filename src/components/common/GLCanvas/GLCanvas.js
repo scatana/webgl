@@ -7,10 +7,11 @@ const GLCanvas = (props) => {
   const {
     width,
     height,
-    setGl,
     fullScreen,
+    draw,
     vShader,
-    fShader } = props;
+    fShader
+  } = props;
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -20,13 +21,26 @@ const GLCanvas = (props) => {
     // Adjust the viewport so that it covers the entire canvas
     gl.viewport(0, 0, canvasRef.current.width, canvasRef.current.height);
 
+    if (fullScreen) {
+      window.addEventListener('resize', () => {
+        canvasRef.current.width = window.innerWidth;
+        canvasRef.current.height = window.innerHeight;
+
+        gl.viewport(0, 0, canvasRef.current.width, canvasRef.current.height);
+      });
+    }
 
     if (vShader && fShader) {
       initShaders(gl, vShader, fShader);
     }
 
-    // Pass the WebGL context to the parent
-    setGl(gl);
+    function render() {
+      draw(gl);
+
+      window.requestAnimationFrame(render);
+    }
+
+    window.requestAnimationFrame(render);
   });
 
   const initShaders = (gl, vShader, fShader) => {
@@ -107,8 +121,8 @@ const GLCanvas = (props) => {
 
   return (
     <canvas
-      width={fullScreen ? null : width}
-      height={fullScreen ? null : height}
+      width={fullScreen ? window.innerWidth : width}
+      height={fullScreen ? window.innerHeight : height}
       className={fullScreen ? styles.fullScreen : null}
       ref={canvasRef}>
       Your browser does not support WebGL.
@@ -119,7 +133,7 @@ const GLCanvas = (props) => {
 GLCanvas.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
-  setGl: PropTypes.func,
+  draw: PropTypes.func,
   fullScreen: PropTypes.bool,
   vShader: PropTypes.string,
   fShader: PropTypes.string
@@ -128,8 +142,8 @@ GLCanvas.propTypes = {
 GLCanvas.defaultProps = {
   width: 400,
   height: 400,
-  setGl: () => {},
-  fullScreen: false,
+  draw: () => {},
+  fullScreen: true,
   vShader: '',
   fShader: ''
 }
