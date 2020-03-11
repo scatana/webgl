@@ -51,11 +51,6 @@ const GLCanvas = (props) => {
     }
   });
 
-  const adjustViewport = (gl) => {
-    const { width, height } = canvasRef.current;
-    gl.viewport(0, 0, width, height);
-  };
-
   const initShaders = (gl, vShader, fShader) => {
     const program = createProgram(gl, vShader, fShader);
 
@@ -156,7 +151,7 @@ GLCanvas.defaultProps = {
   width: 400,
   height: 400,
   draw: () => {},
-  fullScreen: true,
+  fullScreen: false,
   vShader: '',
   fShader: ''
 }
