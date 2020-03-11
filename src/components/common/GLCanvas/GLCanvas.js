@@ -18,30 +18,43 @@ const GLCanvas = (props) => {
     // Get the WebGL context
     const gl = canvasRef.current.getContext('webgl' || 'experimental-webgl');
 
-    // Adjust the viewport so that it covers the entire canvas
-    gl.viewport(0, 0, canvasRef.current.width, canvasRef.current.height);
-
-    if (fullScreen) {
-      window.addEventListener('resize', () => {
+    // Make sure the viewport matches the canvas size
+    function adjustViewport() {
+      if (fullScreen) {
         canvasRef.current.width = window.innerWidth;
         canvasRef.current.height = window.innerHeight;
+      }
 
-        gl.viewport(0, 0, canvasRef.current.width, canvasRef.current.height);
-      });
+      gl.viewport(0, 0, canvasRef.current.width, canvasRef.current.height);
     }
+    adjustViewport();
 
+    // Initialize the shaders
     if (vShader && fShader) {
       initShaders(gl, vShader, fShader);
     }
 
+    // Render the scene
     function render() {
       draw(gl);
 
       window.requestAnimationFrame(render);
     }
-
     window.requestAnimationFrame(render);
+
+    // If we're in fullscreen, watch for window resizing events
+    if (fullScreen) {
+      window.addEventListener('resize', adjustViewport);
+    }
+    return function cleanup() {
+      window.removeEventListener('resize', adjustViewport);
+    }
   });
+
+  const adjustViewport = (gl) => {
+    const { width, height } = canvasRef.current;
+    gl.viewport(0, 0, width, height);
+  };
 
   const initShaders = (gl, vShader, fShader) => {
     const program = createProgram(gl, vShader, fShader);
