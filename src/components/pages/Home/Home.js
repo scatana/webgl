@@ -18,18 +18,12 @@ const Home = () => {
   const chunks = _chunk(pages, 2);
 
   return (
-    <div className="container">
+    <div>
       <h1 className={styles.pageTitle}>WebGL</h1>
-      {chunks.map((chunk, index) => (
-        <div className="row" key={index}>
-          {chunk.map((page, index) => (
-            <div className="column" key={index}>
-              <Link to={page.route} className={styles.card}>
-                {page.title}
-              </Link>
-            </div>
-          ))}
-        </div>
+      {pages.map((page, index) => (
+        <Link to={page.route} className={styles.card} key={index}>
+          {page.title}
+        </Link>
       ))}
     </div>
   );

@@ -38,13 +38,6 @@ module.exports = {
         ]
       },
       {
-        resource: path.resolve('./node_modules/milligram/dist/milligram.min.css'),
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      },
-      {
         test: /\.glsl$/,
         loader: 'glsl-shader-loader',
         options: {
