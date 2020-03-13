@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import _chunk from 'lodash/chunk';
 
 import styles from './Home.css';
 
@@ -15,7 +14,6 @@ const Home = () => {
       title: 'Clear canvas'
     }
   ];
-  const chunks = _chunk(pages, 2);
 
   return (
     <div>

@@ -151,7 +151,7 @@ GLCanvas.defaultProps = {
   width: 400,
   height: 400,
   draw: () => {},
-  fullScreen: false,
+  fullScreen: true,
   vShader: '',
   fShader: ''
 }
