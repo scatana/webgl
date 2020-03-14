@@ -13,38 +13,43 @@ import LoadingIndicator from 'components/common/LoadingIndicator';
 import GLCanvas from 'components/common/GLCanvas';
 
 // Pages
-const HelloPoint1 = lazy(() => import(
-  /* webpackChunkName: "p_HelloPoint1" */
-  'components/pages/HelloPoint1'
-));
 const ClearCanvas = lazy(() => import(
-  /* webpackChunkName: "p_ClearCanvas" */
-  'components/pages/ClearCanvas'
-));
+  /* webpackChunkName: "p_ClearCanvas" */ 'components/pages/ClearCanvas'));
+const HelloPoint1 = lazy(() => import(
+  /* webpackChunkName: "p_HelloPoint1" */ 'components/pages/HelloPoint1'));
+
+const routes = [
+  {
+    url: '/hello-point-1',
+    title: 'Hello Point (1)',
+    page: <HelloPoint1 />
+  },
+  {
+    url: '/clear-canvas',
+    title: 'Clear canvas',
+    page: <ClearCanvas />
+  }
+];
 
 const App = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/clear-canvas">
-          <Suspense fallback={<LoadingIndicator />}>
-            <ClearCanvas />
-          </Suspense>
-        </Route>
-        <Route path="/hello-point-1">
-          <Suspense fallback={<LoadingIndicator />}>
-            <HelloPoint1 />
-          </Suspense>
-        </Route>
+        {routes.map((route, index) => (
+          <Route path={route.url} key={index}>
+            <Suspense fallback={<LoadingIndicator />}>
+              {route.page}
+            </Suspense>
+          </Route>
+        ))}
         <Route path="/">
           <div className={styles.container}>
             <h1 className={styles.pageTitle}>WebGL</h1>
-            <Link to="/hello-point-1" className={styles.card}>
-              Hello Point (1)
-            </Link>
-            <Link to="/clear-canvas" className={styles.card}>
-              Clear canvas
-            </Link>
+            {routes.map((route, index) => (
+              <Link to={route.url} className={styles.card} key={index}>
+                {route.title}
+              </Link>
+            ))}
           </div>
         </Route>
       </Switch>
