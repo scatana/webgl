@@ -17,8 +17,15 @@ const ClearCanvas = lazy(() => import(
   /* webpackChunkName: "p_ClearCanvas" */ 'components/pages/ClearCanvas'));
 const HelloPoint1 = lazy(() => import(
   /* webpackChunkName: "p_HelloPoint1" */ 'components/pages/HelloPoint1'));
+const HelloPoint2 = lazy(() => import(
+  /* webpackChunkName: "p_HelloPoint2" */ 'components/pages/HelloPoint2'));
 
 const routes = [
+  {
+    url: '/hello-point-2',
+    title: 'Hello Point (2)',
+    page: <HelloPoint2 />
+  },
   {
     url: '/hello-point-1',
     title: 'Hello Point (1)',
