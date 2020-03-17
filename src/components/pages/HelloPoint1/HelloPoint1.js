@@ -1,6 +1,7 @@
 import React from 'react';
 
 import GLCanvas from 'components/common/GLCanvas';
+
 import vShader from './shaders/vShader.glsl';
 import fShader from './shaders/fShader.glsl';
 

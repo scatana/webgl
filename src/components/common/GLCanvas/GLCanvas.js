@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import log from 'util/log';
+
 import styles from './GLCanvas.css';
 
 const GLCanvas = (props) => {

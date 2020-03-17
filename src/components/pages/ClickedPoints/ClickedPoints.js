@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import log from 'util/log';
 import GLCanvas from 'components/common/GLCanvas';
+
 import vShader from './shaders/vShader.glsl';
 import fShader from './shaders/fShader.glsl';
 
