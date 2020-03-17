@@ -1,23 +1,28 @@
 import React from 'react';
 
+import log from 'util/log';
 import GLCanvas from 'components/common/GLCanvas';
 import vShader from './shaders/vShader.glsl';
 import fShader from './shaders/fShader.glsl';
 
 const HelloPoint2 = () => {
-  const draw = (gl) => {
-    const a_Position = gl.getAttribLocation(gl.program, 'a_Position');
+  let a_Position, a_PointSize;
+
+  const setup = (canvas, gl) => {
+    a_Position = gl.getAttribLocation(gl.program, 'a_Position');
     if (a_Position < 0) {
-      console.log('Failed to get the storage location of a_Position');
+      log('HelloPoint2: failed to get the storage location of a_Position');
       return;
     }
 
-    const a_PointSize = gl.getAttribLocation(gl.program, 'a_PointSize');
+    a_PointSize = gl.getAttribLocation(gl.program, 'a_PointSize');
     if (a_PointSize < 0) {
-      console.log('Failed to get the storage location of a_PointSize');
+      log('HelloPoint2: failed to get the storage location of a_PointSize');
       return;
     }
+  };
 
+  const draw = (gl) => {
     gl.vertexAttrib1f(a_Position, 0.0);
     gl.vertexAttrib1f(a_PointSize, 5.0);
 
@@ -28,7 +33,11 @@ const HelloPoint2 = () => {
   };
 
   return (
-    <GLCanvas draw={draw} vShader={vShader} fShader={fShader}/>
+    <GLCanvas
+      setup={setup}
+      draw={draw}
+      vShader={vShader}
+      fShader={fShader}/>
   );
 };
 
