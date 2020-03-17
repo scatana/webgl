@@ -1,5 +1,5 @@
-const log = msg => {
-  console.log('[', performance.now(), ']', msg);
+const log = (...args) => {
+  console.log(performance.now(), '|', ...args);
 }
 
 export default log;

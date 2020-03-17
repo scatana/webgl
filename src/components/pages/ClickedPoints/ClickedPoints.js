@@ -34,9 +34,10 @@ const ClickedPoints = () => {
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     let len = g_points.length;
-    for (let i = 0; i < len; i+=2) {
-      gl.vertexAttrib2f(a_Position, g_points[i], g_points[i+1]);
+    for (let i = 0; i < len; i++) {
+      const [x, y] = g_points[i];
 
+      gl.vertexAttrib2f(a_Position, x, y);
       gl.drawArrays(gl.POINTS, 0, 1);
     }
   };
@@ -48,8 +49,7 @@ const ClickedPoints = () => {
 
     x = ((x - rect.left) - canvas.width / 2) / (canvas.width / 2);
     y = (canvas.height / 2 - (y - rect.top)) / (canvas.height / 2);
-    g_points.push(x);
-    g_points.push(y);
+    g_points.push([x, y]);
   }
 
   return (
