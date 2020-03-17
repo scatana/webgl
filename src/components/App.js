@@ -13,14 +13,25 @@ import LoadingIndicator from 'components/common/LoadingIndicator';
 import GLCanvas from 'components/common/GLCanvas';
 
 // Pages
-const ClearCanvas = lazy(() => import(
-  /* webpackChunkName: "p_ClearCanvas" */ 'components/pages/ClearCanvas'));
-const HelloPoint1 = lazy(() => import(
-  /* webpackChunkName: "p_HelloPoint1" */ 'components/pages/HelloPoint1'));
-const HelloPoint2 = lazy(() => import(
-  /* webpackChunkName: "p_HelloPoint2" */ 'components/pages/HelloPoint2'));
+const ClearCanvas = lazy(() => import(/* webpackChunkName: "p_ClearCanvas" */
+  'components/pages/ClearCanvas')
+);
+const HelloPoint1 = lazy(() => import(/* webpackChunkName: "p_HelloPoint1" */
+  'components/pages/HelloPoint1')
+);
+const HelloPoint2 = lazy(() => import(/* webpackChunkName: "p_HelloPoint2" */
+  'components/pages/HelloPoint2')
+);
+const ClickedPoints = lazy(() => import(/* webpackChunkName: "p_ClickedPoints" */
+  'components/pages/ClickedPoints')
+);
 
 const routes = [
+  {
+    url: '/clicked-points',
+    title: 'Clicked Points',
+    page: <ClickedPoints />
+  },
   {
     url: '/hello-point-2',
     title: 'Hello Point (2)',

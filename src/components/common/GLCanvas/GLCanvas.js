@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
+import log from 'util/log';
 import styles from './GLCanvas.css';
 
 const GLCanvas = (props) => {
@@ -8,6 +9,7 @@ const GLCanvas = (props) => {
     width,
     height,
     fullScreen,
+    setup,
     draw,
     vShader,
     fShader
@@ -27,12 +29,18 @@ const GLCanvas = (props) => {
 
       gl.viewport(0, 0, canvasRef.current.width, canvasRef.current.height);
     }
+    log('GLCanvas: adjusting viewport...');
     adjustViewport();
 
     // Initialize the shaders
     if (vShader && fShader) {
+      log('GLCanvas: initializing shaders...');
       initShaders(gl, vShader, fShader);
     }
+
+    // Setup hook
+    log('GLCanvas: running setup hook...');
+    setup(canvasRef.current, gl);
 
     // Render the scene
     function render() {
@@ -40,6 +48,7 @@ const GLCanvas = (props) => {
 
       window.requestAnimationFrame(render);
     }
+    log('GLCanvas: rendering...');
     window.requestAnimationFrame(render);
 
     // If we're in fullscreen, watch for window resizing events
@@ -55,7 +64,7 @@ const GLCanvas = (props) => {
     const program = createProgram(gl, vShader, fShader);
 
     if (!program) {
-      console.log('(initShaders) Failed to create program.');
+      log('GLCanvas (initShaders): failed to create program.');
 
       return false;
     }
@@ -71,14 +80,14 @@ const GLCanvas = (props) => {
     const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fShader);
 
     if (!vertexShader || !fragmentShader) {
-      console.log('(createProgram) Unable to load shader(s).');
+      log('GLCanvas (createProgram): unable to load shader(s).');
       return null;
     }
 
     const program = gl.createProgram();
 
     if (!program) {
-      console.log('(createProgram) Unable to create program.');
+      log('GLCanvas (createProgram): unable to create program.');
       return null;
     }
 
@@ -90,7 +99,7 @@ const GLCanvas = (props) => {
     const linked = gl.getProgramParameter(program, gl.LINK_STATUS);
 
     if (!linked) {
-      console.log('(createProgram) Failed to link program: ' +
+      log('GLCanvas (createProgram): failed to link program: ' +
         gl.getProgramInfoLog(program));
       gl.deleteProgram(program);
       gl.deleteShader(vertexShader);
@@ -106,7 +115,7 @@ const GLCanvas = (props) => {
     const shader = gl.createShader(type);
 
     if (!shader) {
-      console.log('(loadShader) Unable to create shader.');
+      log('GLCanvas (loadShader): unable to create shader.');
 
       return null;
     }
@@ -117,7 +126,7 @@ const GLCanvas = (props) => {
     const compiled = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
 
     if (!compiled) {
-      console.log('(loadShader) Failed to compile shader: ' +
+      log('GLCanvas (loadShader): failed to compile shader: ' +
         gl.getShaderInfoLog(shader));
       gl.deleteShader(shader);
 
@@ -141,6 +150,7 @@ const GLCanvas = (props) => {
 GLCanvas.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
+  setup: PropTypes.func,
   draw: PropTypes.func,
   fullScreen: PropTypes.bool,
   vShader: PropTypes.string,
@@ -150,6 +160,7 @@ GLCanvas.propTypes = {
 GLCanvas.defaultProps = {
   width: 400,
   height: 400,
+  setup: () => {},
   draw: () => {},
   fullScreen: true,
   vShader: '',
