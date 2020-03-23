@@ -19,16 +19,17 @@ const GLCanvas = (props) => {
 
   useEffect(() => {
     // Get the WebGL context
-    const gl = canvasRef.current.getContext('webgl' || 'experimental-webgl');
+    const canvas = canvasRef.current;
+    const gl = canvas.getContext('webgl');
 
     // Make sure the viewport matches the canvas size
     function adjustViewport() {
       if (fullScreen) {
-        canvasRef.current.width = window.innerWidth;
-        canvasRef.current.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
       }
 
-      gl.viewport(0, 0, canvasRef.current.width, canvasRef.current.height);
+      gl.viewport(0, 0, canvas.width, canvas.height);
     }
     log('GLCanvas: adjusting viewport...');
     adjustViewport();
@@ -41,7 +42,7 @@ const GLCanvas = (props) => {
 
     // Setup hook
     log('GLCanvas: running setup hook...');
-    setup(canvasRef.current, gl);
+    setup(canvas, gl);
 
     // Render the scene
     function render() {

@@ -14,19 +14,27 @@ import GLCanvas from 'components/common/GLCanvas';
 
 // Pages
 const ClearCanvas = lazy(() => import(/* webpackChunkName: "p_ClearCanvas" */
-  'components/pages/ClearCanvas')
-);
+  'components/pages/ClearCanvas'
+));
 const HelloPoint1 = lazy(() => import(/* webpackChunkName: "p_HelloPoint1" */
-  'components/pages/HelloPoint1')
-);
+  'components/pages/HelloPoint1'
+));
 const HelloPoint2 = lazy(() => import(/* webpackChunkName: "p_HelloPoint2" */
-  'components/pages/HelloPoint2')
-);
+  'components/pages/HelloPoint2'
+));
 const ClickedPoints = lazy(() => import(/* webpackChunkName: "p_ClickedPoints" */
-  'components/pages/ClickedPoints')
-);
+  'components/pages/ClickedPoints'
+));
+const ColoredPoints = lazy(() => import(/* webpackChunkName: "p_ColoredPoints" */
+  'components/pages/ColoredPoints'
+));
 
 const routes = [
+  {
+    url: '/colored-points',
+    title: 'Colored Points',
+    page: <ColoredPoints />
+  },
   {
     url: '/clicked-points',
     title: 'Clicked Points',
