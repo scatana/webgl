@@ -28,8 +28,16 @@ const ClickedPoints = lazy(() => import(/* webpackChunkName: "p_ClickedPoints" *
 const ColoredPoints = lazy(() => import(/* webpackChunkName: "p_ColoredPoints" */
   'components/pages/ColoredPoints'
 ));
+const MultiPoint = lazy(() => import(/* webpackChunkName: "p_MultiPoint" */
+  'components/pages/MultiPoint'
+));
 
 const routes = [
+  {
+    url: '/multi-point',
+    title: 'MultiPoint',
+    page: <MultiPoint />
+  },
   {
     url: '/colored-points',
     title: 'Colored Points',
