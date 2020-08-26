@@ -31,8 +31,16 @@ const ColoredPoints = lazy(() => import(/* webpackChunkName: "p_ColoredPoints" *
 const MultiPoint = lazy(() => import(/* webpackChunkName: "p_MultiPoint" */
   'components/pages/MultiPoint'
 ));
+const HelloTriangle = lazy(() => import(/* webpackChunkName: "p_HelloTriangle" */
+  'components/pages/HelloTriangle'
+));
 
 const routes = [
+  {
+    url: '/hello-triangle',
+    title: 'Hello Triangle',
+    page: <HelloTriangle />
+  },
   {
     url: '/multi-point',
     title: 'MultiPoint',
